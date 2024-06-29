@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
-import {MatToolbar} from "@angular/material/toolbar";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
   imports: [
-    MatToolbar
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.scss'
+  styleUrl: './toolbar.component.scss',
+  encapsulation: ViewEncapsulation.Emulated
+
 })
 export class ToolbarComponent {
 
