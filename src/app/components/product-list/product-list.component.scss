@@ -28,13 +28,13 @@
     img {
       width: 100%;
       height: 200px; // Fix the height of the images
-      object-fit: cover; // Ensure images cover the fixed height
       margin-bottom: 16px; // Add margin below the image
     }
 
     mat-card-header {
       display: flex;
       align-items: center;
+      margin-bottom: 8px; // Ensure space between header and content
     }
 
     mat-card-title {
@@ -47,8 +47,32 @@
     }
 
     mat-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       font-size: 0.8rem;
       margin-top: 8px; // Add margin to separate the content from the header
+      .product-info {
+        margin-bottom: 16px; // Add margin to separate from actions
+      }
+
+      .price {
+        margin-top: 8px; // Ensure consistent top margin
+        margin-bottom: 8px; // Space between price and other elements
+        font-weight: bold; // Make the price stand out
+      }
+
+      .promotion-label,
+      .flash-sale-label,
+      .new-label {
+        margin-bottom: 8px; // Ensure space between labels and other content
+      }
+
+      .description {
+        flex-grow: 1; // Allow description to grow and take available space
+        margin-bottom: 16px; // Ensure space between description and actions
+      }
     }
 
     mat-card-actions {
@@ -93,3 +117,26 @@
   width: calc(33.333% - 20px); // Adjust based on desired layout
 }
 
+.promotion-label {
+  background-color: #ffcc00; /* Yellow background */
+  color: #000; /* Black text */
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.flash-sale-label {
+  background-color: #ff0000; /* Red background */
+  color: #fff; /* White text */
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.new-label {
+  background-color: #00cc00; /* Green background */
+  color: #fff; /* White text */
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 3px;
+}

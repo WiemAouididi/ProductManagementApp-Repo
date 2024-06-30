@@ -18,7 +18,7 @@ import { MatPaginator, PageEvent } from "@angular/material/paginator";
     CurrencyPipe,
     MatCardContent,
     MatIcon,
-    MatPaginator
+    MatPaginator,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
@@ -55,5 +55,15 @@ export class ProductListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
     this.loadProducts();
+  }
+
+  isNewProduct(product: Product): boolean {
+    if (product.meta.createdAt) {
+      const today = new Date();
+      const productDate = new Date(product.meta.createdAt);
+      const diffDays = Math.ceil((today.getTime() - productDate.getTime()) / (1000 * 3600 * 24));
+      return diffDays <= 3;
+    }
+    return false;
   }
 }
