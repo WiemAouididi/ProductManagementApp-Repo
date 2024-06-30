@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+}
+
+.filter-container {
+  flex: 1; /* Adjust the width of the filter container */
+  max-width: 300px; /* Optional: limit the maximum width */
+  padding: 16px; /* Optional: add some padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for visual separation */
+}
+
+.product-list-container {
+  flex: 3; /* Adjust the width of the product list container */
+  padding: 16px; /* Optional: add some padding */
+}
