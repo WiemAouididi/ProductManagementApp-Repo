@@ -77,3 +77,19 @@
   width: 100%;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  width: calc(33.333% - 20px); // Adjust based on desired layout
+}
+

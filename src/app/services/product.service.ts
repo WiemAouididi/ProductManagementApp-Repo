@@ -12,11 +12,10 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<{ products: Product[] }>(this.apiUrl).pipe(
-      map(response => response.products)
-    );
+  getProducts(skip: number, limit: number): Observable<{ products: Product[], total: number }> {
+    return this.http.get<{ products: Product[], total: number }>(`${this.apiUrl}?skip=${skip}&limit=${limit}`);
   }
+
 
   getProductById(productId: string): Observable<Product> {
     const url = `${this.apiUrl}/${productId}`;

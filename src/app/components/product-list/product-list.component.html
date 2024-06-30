@@ -2,11 +2,19 @@
   @if (products.length === 0) {
     <div class="no-products-message">No products found.</div>
   } @else {
+    <div class="pagination-container">
+      <mat-paginator [length]="totalProducts"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="[5, 10, 25, 100]"
+                     (page)="onPageChange($event)"
+                     aria-label="Select page">
+      </mat-paginator>
+    </div>
     <div class="product-container">
       @for (product of products; track product.id) {
         <div class="product-card">
           <mat-card class="product-card">
-            <img mat-card-image [src]="product.images[0]" alt="{{ product.title }}" />
+            <img mat-card-image [src]="product.images[0]" alt="{{ product.title }}"/>
             <mat-card-content>
               <h2>{{ product.title }}</h2>
               <p>Price: {{ product.price | currency }}</p>
