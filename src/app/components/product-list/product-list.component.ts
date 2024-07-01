@@ -7,7 +7,8 @@ import { MatIcon } from "@angular/material/icon";
 import { Router } from "@angular/router";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { SharedService } from "../../services/shared.service";
-
+import { CartService } from "../../services/cart.service";
+import { RouterModule } from "@angular/router";
 
 
 @Component({
@@ -20,6 +21,7 @@ import { SharedService } from "../../services/shared.service";
     MatCardContent,
     MatIcon,
     MatPaginator,
+    RouterModule
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
@@ -35,7 +37,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private router: Router,
-              private sharedService : SharedService) {
+              private sharedService: SharedService,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -70,4 +73,7 @@ export class ProductListComponent implements OnInit {
     return false;
   }
 
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
 }

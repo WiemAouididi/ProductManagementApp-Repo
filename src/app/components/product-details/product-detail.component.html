@@ -1,1 +1,21 @@
-<p>product-detail works!</p>
+<div class="product-details">
+  <div class="product-info">
+    <h2>{{ product!.title }}</h2>
+    <p class="description">{{ product!.description }}</p>
+    <div class="details">
+      <p><strong>Category:</strong> {{ product!.category }}</p>
+      <p><strong>Price:</strong> ${{ product!.price }}</p>
+      <p><strong>Rating:</strong> {{ displayRating(product.rating) }}</p>
+    </div>
+  </div>
+
+  @if (product!.images && product!.images.length > 0) {
+    <div class="product-images">
+      @for (image of product!.images; track product!.images) {
+        <div class="image-item">
+          <img [src]="image" [alt]="product!.title"/>
+        </div>
+      }
+    </div>
+  }
+</div>

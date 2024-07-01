@@ -1,0 +1,33 @@
+.product-details {
+  display: flex;
+  margin: 20px;
+}
+
+.product-images {
+  max-width: 40%;
+  margin-right: 20px;
+}
+
+.product-images img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.description {
+  font-style: italic;
+}
+
+.details {
+  margin-top: 10px;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+}
+

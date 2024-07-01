@@ -1,14 +1,13 @@
-.no-products-message {
-  padding: 16px;
-  font-weight: bold;
-  color: red;
+.spinner {
+  margin: 20px auto; /* Center the spinner horizontally */
+  display: block; /* Ensure spinner is block-level */
 }
 
 .product-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding: 20px;
+  padding: 20px 90px 50px;
   gap: 16px; // Adjust the gap between the cards as needed
 }
 
@@ -139,4 +138,16 @@
   font-weight: bold;
   padding: 5px;
   border-radius: 3px;
+}
+
+/* product-list.component.scss */
+
+.arrow-icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  color: #673ab7; /* Set icon color */
+}
+
+.arrow-icon:hover {
+  color: #7e57c2; /* Change icon color on hover */
 }
