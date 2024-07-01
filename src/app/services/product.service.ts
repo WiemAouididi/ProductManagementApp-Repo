@@ -29,4 +29,13 @@ export class ProductService {
   searchProducts(products: Product[], name: string): Product[] {
     return products.filter(product => product.title.toLowerCase().includes(name.toLowerCase()));
   }
+
+  updateProduct(productData: any): Observable<any> {
+    const url = `${this.apiUrl}/products/${productData.id}`; // Adjust URL as per your API structure
+    return this.http.put(url, productData);
+  }
+
+  addProduct(productData: Product): Observable<any> {
+    return this.http.post(`${this.apiUrl}/products`, productData);
+  }
 }
