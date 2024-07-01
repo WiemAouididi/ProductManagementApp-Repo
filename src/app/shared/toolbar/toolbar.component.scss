@@ -28,3 +28,20 @@
   }
 }
 
+.cart-badge {
+  position: relative;
+  top: -18px;
+  left: -5px;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 50%;
+
+}
+
+.app-title {
+  cursor: pointer;
+}
+

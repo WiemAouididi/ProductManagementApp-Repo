@@ -1,0 +1,25 @@
+<div class="cart-container">
+    <div class="empty-cart-message" *ngIf="cartItems!.length === 0">
+      Your shopping cart is empty.
+    </div>
+
+  @for(item of cartItems; track item.id)
+  {
+    <div class="cart-item">
+      <div class="item-details">
+        <img [src]="item.images[0]" alt="{{ item.title }}" class="item-image">
+        <div class="item-info">
+          <p class="item-title">{{ item.title }}</p>
+          <p class="item-price">Price: ${{ item.price }}</p>
+          <p class="item-quantity">Quantity: {{ getQuantity(item) }}</p>
+          <p class="item-total">Total: ${{ item.price * getQuantity(item) }}
+        </div>
+      </div>
+    </div>
+  }
+  <div class="cart-summary">
+    <div class="cart-total">
+      <span>Total Cart Value:</span> ${{ calculateTotalPrice() }}
+    </div>
+  </div>
+</div>

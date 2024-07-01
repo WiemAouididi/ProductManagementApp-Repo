@@ -8,6 +8,9 @@ import { SharedService } from "../../services/shared.service";
 import { Product } from "../../models/product.model";
 import { Observable, of } from "rxjs";
 import { map, startWith } from "rxjs/operators";
+import { CartService } from "../../services/cart.service";
+import { ShoppingCartComponent } from "../../components/shopping-cart/shopping-cart.component";
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +19,9 @@ import { map, startWith } from "rxjs/operators";
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    ReactiveFormsModule
+    RouterModule,
+    ReactiveFormsModule,
+    ShoppingCartComponent
   ],
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
@@ -27,7 +32,9 @@ export class ToolbarComponent implements OnInit {
   allProducts: Product[] = [];
   filteredProducts: Observable<Product[]> = of([]);
 
-  constructor(private productService: ProductService, private sharedService: SharedService) {
+  constructor(private productService: ProductService,
+              private sharedService: SharedService,
+              public cartService: CartService) {
   }
 
   ngOnInit(): void {
