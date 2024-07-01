@@ -140,7 +140,6 @@
   border-radius: 3px;
 }
 
-/* product-list.component.scss */
 
 .arrow-icon {
   font-size: 1.5rem; /* Adjust icon size */
@@ -150,4 +149,21 @@
 
 .arrow-icon:hover {
   color: #7e57c2; /* Change icon color on hover */
+}
+
+.product-item {
+  margin-bottom: 20px;
+}
+
+button.mat-button {
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #7e57c2;
+  }
 }

@@ -2,24 +2,29 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
-
+import { RouterModule, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterModule,
+  ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
 })
 
-export class ProductDetailComponent implements OnInit{
+export class ProductDetailComponent implements OnInit {
   @Input() product!: Product;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
-  ) {}
+    private productService: ProductService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -46,5 +51,10 @@ export class ProductDetailComponent implements OnInit{
     stars += '✩'.repeat(emptyStars);
 
     return stars;
+  }
+
+  openProductForm(product: Product) {
+    // Navigate to product form component with product details for editing
+    this.router.navigate(['/product-form', product.id]);
   }
 }
