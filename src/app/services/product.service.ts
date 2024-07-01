@@ -9,16 +9,24 @@ import { Product } from "../models/product.model";
 export class ProductService {
   private apiUrl = 'https://dummyjson.com/products';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getProducts(skip: number, limit: number): Observable<{ products: Product[], total: number }> {
     return this.http.get<{ products: Product[], total: number }>(`${this.apiUrl}?skip=${skip}&limit=${limit}`);
   }
 
-
-  getProductById(productId: string): Observable<Product> {
+  getProductById(productId: number): Observable<Product> {
     const url = `${this.apiUrl}/${productId}`;
     return this.http.get<Product>(url);
+  }
+
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<{ products: Product[] }>(this.apiUrl).pipe(
+      map(response => response.products)
+    );
+  }
+
+  searchProducts(products: Product[], name: string): Product[] {
+    return products.filter(product => product.title.toLowerCase().includes(name.toLowerCase()));
   }
 }
