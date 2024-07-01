@@ -6,6 +6,7 @@ import { CurrencyPipe } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
 import { Router } from "@angular/router";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
+import { SharedService } from "../../services/shared.service";
 
 
 
@@ -33,11 +34,13 @@ export class ProductListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private productService: ProductService,
-              private router: Router) {
+              private router: Router,
+              private sharedService : SharedService) {
   }
 
   ngOnInit(): void {
     this.loadProducts();
+    this.sharedService.currentProducts.subscribe(products => this.products = products);
   }
 
   loadProducts(): void {
@@ -66,4 +69,5 @@ export class ProductListComponent implements OnInit {
     }
     return false;
   }
+
 }

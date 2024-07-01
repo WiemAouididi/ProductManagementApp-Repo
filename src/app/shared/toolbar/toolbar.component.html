@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
   <span>EasyShop</span>
+  <div class="search-bar">
+    <mat-icon matPrefix class="centered-icon">search</mat-icon>
+    <input [formControl]="searchControl" placeholder="Search for a product">
+  </div>
   <span class="spacer"></span>
   <button mat-button routerLink="/">
     <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
