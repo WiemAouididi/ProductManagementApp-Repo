@@ -167,3 +167,10 @@ button.mat-button {
     background-color: #7e57c2;
   }
 }
+
+.arrow-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+}
