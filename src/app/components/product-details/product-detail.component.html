@@ -1,22 +1,26 @@
-<button mat-button color="primary" [routerLink]="['/product/edit', product.id]">Edit</button>
-<div class="product-details">
-  <div class="product-info">
-    <h2>{{ product!.title }}</h2>
-    <p class="description">{{ product!.description }}</p>
-    <div class="details">
-      <p><strong>Category:</strong> {{ product!.category }}</p>
-      <p><strong>Price:</strong> ${{ product!.price }}</p>
-      <p><strong>Rating:</strong> {{ displayRating(product.rating) }}</p>
+<div class="button-container">
+  <button mat-button color="primary" [routerLink]="['/product/edit', product.id]" class="rounded-button">Edit</button>
+</div>
+<div class="product-details-container">
+  <div class="product-details">
+    <div class="product-info">
+      <h2>{{ product!.title }}</h2>
+      <p class="description">{{ product!.description }}</p>
+      <div class="details">
+        <p><strong>Category:</strong> {{ product!.category }}</p>
+        <p><strong>Price:</strong> ${{ product!.price }}</p>
+        <p><strong>Rating:</strong> {{ displayRating(product.rating) }}</p>
+      </div>
     </div>
-  </div>
 
-  @if (product!.images && product!.images.length > 0) {
-    <div class="product-images">
-      @for (image of product!.images; track product!.images) {
-        <div class="image-item">
-          <img [src]="image" [alt]="product!.title"/>
-        </div>
-      }
-    </div>
-  }
+    @if (product!.images && product!.images.length > 0) {
+      <div class="product-images">
+        @for (image of product!.images; track product!.images) {
+          <div class="image-item">
+            <img [src]="image" [alt]="product!.title"/>
+          </div>
+        }
+      </div>
+    }
+  </div>
 </div>

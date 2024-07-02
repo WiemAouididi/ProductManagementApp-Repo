@@ -6,7 +6,7 @@ import { ProductService } from "../../services/product.service";
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: 'app-product-form',
   standalone: true,
@@ -28,7 +28,8 @@ export class ProductFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -37,12 +38,11 @@ export class ProductFormComponent {
       title: ['', Validators.required],
       description: [''],
       price: ['', Validators.required],
-      // other fields
     });
 
     this.route.paramMap.subscribe(params => {
       // @ts-ignore
-      this.productId = +params.get('id'); // Parse id to number using +
+      this.productId = +params.get('id');
       if (this.productId) {
         this.isEditMode = true;
         this.productService.getProductById(this.productId).subscribe(
@@ -52,7 +52,6 @@ export class ProductFormComponent {
               title: product.title,
               description: product.description,
               price: product.price,
-              // patch other form fields
             });
           },
           (error) => {
@@ -68,12 +67,9 @@ export class ProductFormComponent {
       const formData = this.productForm.value;
       if (this.isEditMode && this.product) {
         formData.id = this.product.id;
-        this.productService.updateProduct(formData).subscribe(
-          () => {
-            console.log('Product updated successfully');
-          },
-          (error) => {
-            console.error('Error updating product:', error);
+        this.productService.updateProduct(formData).then(res => {
+            console.log("aaaaaaaaaaaaaa")
+            this.router.navigate(['/products', res?.id])
           }
         );
       } else {

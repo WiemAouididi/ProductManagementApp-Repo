@@ -30,9 +30,15 @@ export class ProductService {
     return products.filter(product => product.title.toLowerCase().includes(name.toLowerCase()));
   }
 
-  updateProduct(productData: any): Observable<any> {
-    const url = `${this.apiUrl}/products/${productData.id}`; // Adjust URL as per your API structure
-    return this.http.put(url, productData);
+  updateProduct(productData: Product): Promise<any> {
+    return fetch('https://dummyjson.com/products/'+productData.id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        productData
+      })
+    })
+      .then(response => response.json());
   }
 
   addProduct(productData: Product): Observable<any> {

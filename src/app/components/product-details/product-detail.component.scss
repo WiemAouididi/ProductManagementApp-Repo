@@ -31,3 +31,22 @@
   flex-direction: column;
 }
 
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.rounded-button {
+  height: 40px;
+  width: 100px;
+  background-color: #00cc00;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+}
